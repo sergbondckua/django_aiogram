@@ -9,7 +9,12 @@ from django.views.decorators.csrf import csrf_exempt
 
 from telegram_bot.webhook import proceed_update
 
-logging.basicConfig(level=logging.DEBUG)
+# Enable logging
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.DEBUG,
+)
+logger = logging.getLogger(__name__)
 
 
 class IndexView(View):
@@ -20,7 +25,9 @@ class IndexView(View):
 
 
 class WebhookTelegramView(View):
-    """Web hooks view for Telegram"""
+    """
+    A class representing a webhook view for handling incoming Telegram messages
+    """
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
