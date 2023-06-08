@@ -6,7 +6,7 @@ from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
 from django.conf import settings
 
-from telegram_bot.config_bot.handlers import user
+from telegram_bot.config_bot.handlers import user, testing
 
 # Enable logging
 logging.basicConfig(
@@ -21,3 +21,7 @@ dp = Dispatcher(bot, storage=storage)
 
 # Start all handlers
 user.register_user_handlers(dp)
+
+
+# Test
+testing.register_testing_handlers(dp)
